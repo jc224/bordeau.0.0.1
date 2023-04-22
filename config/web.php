@@ -28,15 +28,35 @@ $config = [
         ],
 
         //compponnets
-      
+        'pageClass'=>[
+            'class'=>'app\components\pageClass',
+        ],
+
+           //compponnets
+        'searchClass'=>[
+            'class'=>'app\components\searchClass',
+        ],
         'adminClass'=>[
             'class'=>'app\components\adminClass',
         ],
+
+        'sslcommerzClass'=>[
+            'class'=>'app\components\sslcommerzClass',
+        ],
+
+        'homeClass'=>[
+            'class'=>'app\components\homeClass',
+        ],
+
         'dashboardClass'=>[
             'class'=>'app\components\dashboardClass',
         ],  
         'controllerClass'=>[
             'class'=>'app\components\controllerClass',
+        ],
+
+        'commandeClass'=>[
+            'class'=>'app\components\commandeClass',
         ],
 
         'eloquantClass'=>[
@@ -65,7 +85,22 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 md5('site_index')=>'site/index',
+                md5('site_changepassword')=>'site/changepassword',
+                md5('site_acount')=>'site/acount',
+                md5('site_recherche')=>'site/recherche',
+                md5('site_contact')=>'site/contact',
+                md5('site_login')=>'site/login',
+                md5('site_card')=>'site/card',
+                md5('site_statuts')=>'site/statuts',
+                md5('site_paiement')=>'site/paiement',
+                md5('site_commande')=>'site/commande',
+                md5('site_deconnection')=>'site/deconnection',
+                md5('site_compte')=>'site/compte',
+                md5('site_produit').'/<id:\w+>'=>'site/produit',
                 md5('site_dashboard')=>'site/dashboard',
+                md5('site_categorie').'/<id:\w+>'=>'site/categorie',
+
+                
 
             ],
         ],

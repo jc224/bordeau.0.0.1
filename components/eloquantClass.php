@@ -27,24 +27,32 @@
                     $ca1ColumnUpper = strtoupper($ca1Column);
                     @$sql2 .= "`$ca1Column`=:$ca1ColumnUpper, ";
                 }
+              
                 $sql2 = rtrim(@$sql2, ", ");
                 
                 $preSQL = $sql1 . $sql2; //
                 $query =  $this->connect->createCommand($preSQL);
-                
+      
+
                 foreach($columnValue AS $ca2Column => $ca2Value)
                 {
                     $ca2ColumnUpper = strtoupper($ca2Column);
-                    $postSQL[$ca2ColumnUpper] = $ca2Value;
+                    // $postSQL[$ca2ColumnUpper] = $ca2Value;
+                    $query->bindValue($ca2ColumnUpper, $ca2Value);
                 }
+             
+                // die(var_dump($query));
+
                 $query->execute();
-                $dataAdded = $query->rowCount();
-                $lastInsertId = $this->connection->lastInsertId();
-                
-                return array("NO_OF_ROW_INSERTED"=>$dataAdded, "LAST_INSERT_ID"=>$lastInsertId);
+                $req =  $this->connect->createCommand("SELECT id FROM  $tableName  ORDER BY id DESC  LIMIT 1")->queryOne();
+               
+                $lastInsertId =  $req['id'];
+			
+                return array("NO_OF_ROW_INSERTED"=>1, "LAST_INSERT_ID"=>$lastInsertId);
             }
             catch(Exception $e) 
             {
+                die($e->getMessage());
                 return 0;
             }
         }
@@ -87,7 +95,8 @@
                     foreach($columnValue AS $ca2Column => $ca2Value)
                     {
                         $ca2ColumnUpper = strtoupper($ca2Column);
-                        $postSQL[$ca2ColumnUpper] = $ca2Value;
+                        $query->bindValue($ca2ColumnUpper, $ca2Value);
+
                     }
                 }
                 else
@@ -95,19 +104,20 @@
                     foreach($columnValue AS $ca2Column => $ca2Value)
                     {
                         $ca2ColumnUpper = strtoupper($ca2Column);
-                        $postSQL[$ca2ColumnUpper] = $ca2Value;
+                        $query->bindValue($ca2ColumnUpper, $ca2Value);
+
                     }
                     
                     foreach($whereValue AS $wa2Column => $wa2Value)
                     {
                         $wa2WhereUpper = strtoupper($wa2Column);
-                        $postSQL[$wa2WhereUpper] = $wa2Value;
+                        $query->bindValue($wa2WhereUpper, $wa2Value);
+
                     }
                 }
-                $query->execute($postSQL);
-                $dataAdded = $query->rowCount();
+                $dataAdded=  $query->execute();
                 
-                return $dataAdded;
+                return 10;
             }
             catch(Exception $e) 
             {
@@ -139,25 +149,26 @@
                     foreach($whereValue AS $wa2Column => $wa2Value)
                     {
                         $wa2WhereUpper = strtoupper($wa2Column);
-                        $postSQL[$wa2WhereUpper] = $wa2Value;
+                        $query->bindValue($wa2WhereUpper, $wa2Value);
+
                     }
-                    
-                    $query->execute($postSQL);
+                    // die($preSQL);
+                    $query->execute();
                 }
                 else
                 {
                     $preSQL = $sql1;
-                    $query =  $this->connect->createCommand($preSQL);
-                    $query->execute();
+                    $query =  $this->connect->createCommand($preSQL)
+                    ->execute();
                 }
-                
-                $dataAdded = $query->rowCount();
+              
+                $dataAdded =2;
                 
                 return $dataAdded;
-            }
+            }   
             catch(Exception $e) 
             {
-                return 0;
+                die($e->getMessage());
             }
         }
         
@@ -243,7 +254,7 @@
                     }
                 }
                 // -- WHERE -- //
-                
+              
                 $query =  $this->connect->createCommand($preSQL)
                 ->queryAll();
                 return $query;
@@ -320,19 +331,165 @@
                     $preSQL = $preSQL . " LIMIT " . $paginate['POINT'] . ", " . $paginate['LIMIT'];
                 // -- PAGINATION HANDLER -- //
                 
-                $query =  $this->connect->createCommand($preSQL);
-                $query->execute();
-                $dataSelected = $query->fetchAll(PDO::FETCH_ASSOC);
+                $query =  $this->connect->createCommand($preSQL)
+                ->queryAll();
                 
-                return $dataSelected;
+                return $query;
             }
             catch(Exception $e) 
             {
                 return 0;
             }
-        }
         
+        
+        
+        }
+
+
+
+        	// ---------- ---------- ---------- SELECT FUNCTION SET ---------- ---------- ---------- //
+        public function selectJoinDataprodu($columnName, $tableName, $joinType = "INNER", $onCondition, $whereValue = 0, $formatBy = 0, $paginate = 0)
+        {
+        
+            try
+            {
+                // -- SELECT FROM TABLE -- //
+                if($columnName == "*")
+                {
+                    $sql1 = "SELECT ";
+                    $sql2 = "*";
+                }
+                else
+                {
+                    $sql1 = "SELECT ";
+                    foreach($columnName AS $ca1Column => $ca1Value)
+                    {
+                        @$sql2 .= "$ca1Value, ";
+                    }
+                    $sql2 = rtrim(@$sql2, ", ");
+                }
+              
+                // -- SELECT FROM TABLE -- //
+                
+                // -- FROM -- //
+                $sql3 = " FROM `" . $tableName['MAIN'] . "`";
+                // -- FROM -- //
+               
+                // -- JOIN QUERY -- //
+                foreach($onCondition AS $on1Column => $on1Value)
+                {
+                    @$sql4 .= " " . $joinType . " JOIN `" . $tableName[$on1Column] . "` ON " . $on1Value[0] . " = " . $on1Value[1];
+                }
+                //  die($sql3);-- JOIN QUERY -- //
+        
+                // -- FORMAT -- //
+                if(@$formatBy['ASC'])
+                    $sql7 = " ORDER BY " . $formatBy['ASC'] . " ASC";
+                else if(@$formatBy['DESC'])
+                    $sql7 = " ORDER BY " . $formatBy['DESC'] . " DESC";
+                else
+                    $sql7 = "";
+                // -- FORMAT -- //
+               
+                // -- WHERE -- //
+                if($whereValue != 0)
+                {
+                    $sql5 = " WHERE ";
+                
+                    foreach($whereValue AS $wa1Column => $wa1Value)
+                    {
+                        @$sql6 .= $wa1Column . " = " . "'" . $wa1Value . "' AND ";
+                    }
+                    $sql6 = trim($sql6); $sql6 = rtrim($sql6, "AND"); $sql6 = trim($sql6); // NIRU //
+                    
+                    $preSQL = $sql1 . $sql2 . $sql3 . $sql4 . $sql5 . $sql6 . $sql7;
+                }
+
+                
+                else
+                {
+                    $preSQL = $sql1 . $sql2 . $sql3 . $sql4 . $sql7;
+                }
+                // -- WHERE -- //
+             
+                // -- PAGINATION HANDLER -- //
+                if($paginate != 0)
+                    $preSQL = $preSQL . " LIMIT " . $paginate['POINT'] . ", " . $paginate['LIMIT'];
+                // -- PAGINATION HANDLER -- //
+           
+                $query =  $this->connect->createCommand($preSQL);
+                $liste = $query->queryAll();
+                return $liste;
+            }
+            catch(Exception $e) 
+            {
+                die($e->getMessage());
+            }
+        }
+    
+    
+    //selection des produit
+    public function breadcrumbName($columnName,$tableName,$joinType, $onCondition, $whereValue=0,$formatBy=''){
+        try {
+              // -- SELECT FROM TABLE -- //
+              if($columnName == "*")
+              {
+                  $sql1 = "SELECT ";
+                  $sql2 = "*";
+              }
+              else
+              {
+                  $sql1 = "SELECT ";
+                  foreach($columnName AS $ca1Column => $ca1Value)
+                  {
+                      @$sql2 .= "$ca1Value, ";
+                  }
+                  $sql2 = rtrim(@$sql2, ", ");
+              }
+
+              $sql3 = " FROM `" . $tableName['MAIN'] . "`";
+              
+          
+                // -- JOIN QUERY -- //
+                foreach($onCondition AS $on1Column => $on1Value)
+                {
+                    @$sql4 .= " " . $joinType . " JOIN `" . $tableName[$on1Column] . "` ON " . $on1Value[0] . " = " . $on1Value[1];
+                }
+                // -- JOIN QUERY -- //
+                
+                   // -- FORMAT -- //
+                   if(@$formatBy['ASC'])
+                   $sql7 = " ORDER BY " . $formatBy['ASC'] . " ASC";
+               else if(@$formatBy['DESC'])
+                   $sql7 = " ORDER BY " . $formatBy['DESC'] . " DESC";
+               else
+                   $sql7 = "";
+               // -- FORMAT -- //
+            
+              // -- WHERE -- //
+              if($whereValue != 0)
+              {
+                  $sql5 = " WHERE ";
+              
+                  foreach($whereValue AS $wa1Column => $wa1Value)
+                  {
+                      @$sql6 .= $wa1Column . " = " . "'" . $wa1Value . "' AND ";
+                  }
+                  $sql6 = trim($sql6); $sql6 = rtrim($sql6, "AND"); $sql6 = trim($sql6); // NIRU //
+                  
+                  $preSQL = $sql1 . $sql2 . $sql3 . $sql4 . $sql5 . $sql6 . $sql7;
+              }
+            
+
+
+            $query =  $this->connect->createCommand($preSQL)
+                        ->queryAll();
+             return $query;
+        } catch (\Throwable $th) {
+           return 0;
+        }
     }
+}
         
    
      

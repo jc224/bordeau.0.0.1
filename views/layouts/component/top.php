@@ -24,10 +24,10 @@
 						<h5 class="left-nav-title"> Account Information </h5>
 						<ul class="nav nav-pills nav-stacked custom-nav">
 							<li>
-								<a href="?exit=lock"> <i class="fa fa-user"></i> <span> Lock Screen </span> </a>
+								<a href="?exit=lock"> <i class="fa fa-user"></i> <span> Verrouiller l'ecran </span> </a>
 							</li>
 							<li>
-								<a href="?exit=yes"> <i class="fa fa-sign-out"></i> <span> Sign Out </span> </a>
+								<a href="?exit=yes"> <i class="fa fa-sign-out"></i> <span> Deconnexion </span> </a>
 							</li>
 						</ul>
 					</div>
@@ -63,13 +63,13 @@
 							{
 								echo '
 								<li class="menu-list">
-									<a href="#"> <i class="fa fa-picture-o"></i></i> <span> Manage Slider </span> </a> <i class="fas fa-sliders-h"></i>
+									<a href="#"> <i class="fa fa-picture-o"></i></i> <span> Banner</span> </a> <i class="fas fa-sliders-h"></i>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_crateslidbar').'"> Add Image Slider </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_crateslidbar').'"> Ajouter un Banner</a>
 										</li>
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listeslidbar').'"> List Image Slider </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listeslidbar').'"> Liste des   Banner </a>
 										</li>
 									</ul>
 								</li>
@@ -80,13 +80,13 @@
 							{
 								echo '
 								<li class="menu-list">
-									<a href="#"> <i class="fa fa-users"></i> <span> Manage Customer </span> </a>
+									<a href="#"> <i class="fa fa-users"></i> <span> Gestion des Clients </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_custommer').'"> Customer List </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listesclient').'"> Gestion Des Client </a>
 										</li>
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_review').'"> Customer Overview </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_review').'"> Clients </a>
 										</li>
 									</ul>
 								</li>
@@ -97,13 +97,13 @@
 							{
 								echo '
 								<li class="menu-list">
-									<a href="#"> <i class="fa fa-folder-open"></i> <span> Manage Category </span> </a>
+									<a href="#"> <i class="fa fa-folder-open"></i> <span> Gestion des Categorie </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_creatCategorie').'"> Create Category </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_creatcategorie').'"> Ajouter Une Categorie </a>
 										</li>
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listcategorie').'"> List Category </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listcategorie').'"> Liste des Categorie</a>
 										</li>
 									</ul>
 								</li>
@@ -114,13 +114,13 @@
 							{
 								echo '
 								<li class="menu-list">
-									<a href="#"> <i class="fa fa-list-alt"></i> <span> Manage Sub Category </span> </a>
+									<a href="#"> <i class="fa fa-list-alt"></i> <span> Gestion Des Sous Categorie </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_subcategorie').'"> Create Sub Category </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_subcategorie').'"> Ajuter un Sous Categorie </a>
 										</li>
 										<li>
-											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listesubcat').'"> Sub Category List </a>
+											<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listesubcat').'"> Liste Des Sous Categorie </a>
 										</li>
 									</ul>
 								</li>
@@ -131,13 +131,13 @@
 							{
 								echo '
 								<li class="menu-list">
-									<a href="#"> <i class="fa fa-th"></i> <span> Manage Products </span> </a>
+									<a href="#"> <i class="fa fa-th"></i> <span> Gestion des produits </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="create-product.php"> Create Products</a>
+										<a href="'. yii::$app->request->baseurl.'/'.md5('admin_addproduits').'"> Ajouter Un Produits </a>
 										</li>
 										<li>
-											<a href="list-product.php"> Products List </a>
+										<a href="'. yii::$app->request->baseurl.'/'.md5('admin_listeproduits').'"> Liste des produits </a>
 										</li>
 									</ul>
 								</li>
@@ -148,13 +148,13 @@
 							{
 								echo '
 								<li class="menu-list">
-									<a href="#"> <i class="fa fa-tags"></i> <span> Manage Orders </span> </a> <i class="fas fa-sort-amount-up-alt"></i>
+									<a href="#"> <i class="fa fa-tags"></i> <span> Commande</span> </a> <i class="fas fa-sort-amount-up-alt"></i>
 									<ul class="sub-menu-list">
 										<li>
-										<a href="list-order.php"> Orders List </a>
+										<a href="list-order.php"> Commande </a>
 										</li>
 										<li>
-										<a href="invoice-list.php"> Invoice List </a>
+										<a href="invoice-list.php">factures </a>
 										</li>
 									</ul>
 								</li>';

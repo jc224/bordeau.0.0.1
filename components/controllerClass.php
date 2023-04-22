@@ -11,7 +11,7 @@
 		### CONNECTION MANAGER
 		public function __construct()
 		{
-            $this->connect = \Yii::$app->db;
+            $this->connection = \Yii::$app->db;
 
 		}
 		

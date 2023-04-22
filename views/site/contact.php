@@ -1,68 +1,129 @@
-<?php
 
-/** @var yii\web\View $this */
-/** @var yii\bootstrap5\ActiveForm $form */
-/** @var app\models\ContactForm $model */
-
-use yii\bootstrap5\ActiveForm;
-use yii\bootstrap5\Html;
-use yii\captcha\Captcha;
-
-$this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
-    <?php else: ?>
-
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
-        <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
-
-                <?php ActiveForm::end(); ?>
-
-            </div>
-        </div>
-
-    <?php endif; ?>
-</div>
+<!--=*= CONTACT SECTION START =*=-->
+<main class="main">
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.php">Acceuil</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Contacter Nous</li>
+			</ol>
+		</div>
+	</nav>
+	<div class="page-header">
+		<div class="container">
+			
+			<?php 
+				#== SUBMIT CONFIRMATION MESSAGE
+				if(isset($_POST['user_contact']))
+				{
+					if($contactsData > 0)
+						echo '<div class="alert alert-success">
+									Dear Customer, we appeciate your valueable comments. Our team will be contact you soon, thanks for stay with us.
+								</div>';
+				}
+			?>
+			
+			<h1>Contacter Nous</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="map">
+			<div class="map-part">
+				<div id="map" class="map-inner-part"></div>
+			</div>
+			
+			<!--=*= GOOGLE MAP CONTENT START =*=-->
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyC_G1wZMKrwyHHOteMdVwCy82Qm4Pp7vyI&amp;callback=initMap"></script> 
+			<script type="text/javascript">
+				// #== When the window has finished loading create our google map below
+				google.maps.event.addDomListener(window, 'load', init);
+				
+				function init() {
+					// #== Basic options for a simple Google Map
+					// #== For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+					
+					var mapOptions = {
+						// #== How zoomed in you want the map to start at (always required)
+						zoom: 14,
+						scrollwheel:false,
+						
+						// #== The latitude and longitude to center the map (always required)
+						center: new google.maps.LatLng(23.617928, 90.4864331), // New York
+						
+						// #== How you would like to style the map. 
+						// #== This is where you would paste any style found on Snazzy Maps.
+						styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#666666"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#666666"},{"lightness":100},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+					};
+					
+					// #== Get the HTML DOM element that will contain your map 
+					// #== We are using a div with id="map" seen below in the <body>
+					var mapElement = document.getElementById('map');
+					
+					// #== Create the Google Map using our element and options defined above
+					var map = new google.maps.Map(mapElement, mapOptions);
+					
+					// #== Let's also add a marker while we're at it
+					
+				var marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(23.617928, 90.4864331)});infowindow = new google.maps.InfoWindow({content:"<b>https://aamroni.net</b><br/>BSCIC-1420<br/> Narayanganj" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
+			</script> 
+			<!--=*= GOOGLE MAP CONTENT END =*=-->
+			
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<h2 class="light-title">Message</strong></h2>
+				<form action="" method="post" action="<?= Yii::$app->request->baseUrl.'/'.md5('login_contact')?>">
+						<input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>"/>
+					<div class="form-group required-field">
+						<label for="contact-name">Nom</label>
+						<input type="text" class="form-control" name="contact_name" required>
+					</div>
+					<div class="form-group required-field">
+						<label for="contact-email">Email</label>
+						<input type="email" class="form-control" name="contact_email" required>
+					</div>
+					<div class="form-group">
+						<label for="contact-phone">Numero de telephone</label>
+						<input type="tel" class="form-control" name="contact_phone">
+					</div>
+					<div class="form-group required-field">
+						<label for="contact-message">Suggestions</label>
+						<textarea cols="30" rows="1" class="form-control" name="contact_message" required></textarea>
+					</div>
+					<div class="form-footer">
+						<button type="submit" name="user_contact" class="btn btn-primary">Valider</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<h2 class="light-title">Contact <strong>Details</strong></h2>
+				<div class="contact-info">
+					<div>
+						<i class="icon-phone"></i>
+						<p><a href="tel:">224 623 516 202</a></p>
+						<p>Number</p>
+					</div>
+					<!-- <div>
+						<i class="icon-mobile"></i>
+						<p><a href="tel:">880 1316 440497</a></p>
+						<p>Home Number</p>
+					</div> -->
+					<div>
+						<i class="icon-mail-alt"></i>
+						<p><a href="mailto:#">bordeau224@gmail.com</a></p>
+						<p><a href="mailto:#">bordeau224@gmail.com</a></p>
+					</div>
+					<div>
+						<i class="icon-skype"></i>
+						<p><a href="skype:live:.cid.5ed7daebee5e7820">Jeune Codeur</a></p>
+						<p>Devellopeur Web Full Stack</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mb-8">
+		<!-- CREATE A EMPTY SPACE BETWEEN CONTENT -->
+	</div>
+</main>
+<!--=*= CONTACT SECTION START =*=-->

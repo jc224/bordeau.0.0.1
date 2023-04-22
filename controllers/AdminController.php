@@ -12,6 +12,47 @@ use yii\filters\VerbFilter;
 class AdminController extends Controller
 {
 
+  
+    public function actionCrateslidbar(){
 
+    }
+
+
+    public function actionListeslidbar(){
+
+    }
+
+    public function actionListesclient(){
+
+    }
  
+    public function actionReview(){
+
+    }
+
+    public function actionCreatcategorie(){
+
+    }
+
+    public function actionListcategorie(){
+
+    }
+
+    public function actionSubcategorie(){
+
+    }
+
+    public function actionListesubcat(){
+
+    }
+
+
+    public function actionAddproduits(){
+
+    }
+
+    public function actionListeproduits(){
+
+    }
+
 }

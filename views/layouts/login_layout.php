@@ -55,7 +55,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => Yii::g
     
         <?= $content ?>
 </main>
->
+
 
 <?php $this->endBody() ?>
 </body>

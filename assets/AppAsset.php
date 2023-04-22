@@ -20,41 +20,60 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-		'admin/css/style-responsive.css',
-        'admin/summernote/summernote-lite.min.css',
-		'admin/js/datatable/css/demo_table.css',
-		'admin/css/style.css',
-		'admin/css/style-responsive.css',
-		'admin/css/custom.css',
+		'web/admin/css/style-responsive.css',
+        'web/admin/summernote/summernote-lite.min.css',
+		'web/admin/js/datatable/css/demo_table.css',
+		'web/admin/css/style.css',
+		'web/admin/css/style-responsive.css',
+		'web/admin/css/custom.css',
 
+
+		'web/public/assets/css/bootstrap.min.css',
+		'web/public/assets/css/toastr.css',
+		'web/public/assets/css/style.min.css',
+		'web/public/assets/css/custom.css',
+		'web/public/assets/js/jquery.min.js',
 
 
     ];
     public $js = [
 
-        'admin/js/jquery-ui-1.9.2.custom.min.js',
-		'admin/js/jquery-migrate-1.2.1.min.js',
-		'admin/js/bootstrap.min.js',
-		'admin/js/modernizr.min.js',
-		'admin/js/jquery.nicescroll.js',
-		'admin/js/scripts.js',
+        'web/admin/js/jquery-ui-1.9.2.custom.min.js',
+		'web/admin/js/jquery-migrate-1.2.1.min.js',
+		'web/admin/js/bootstrap.min.js',
+		'web/admin/js/modernizr.min.js',
+		'web/admin/js/jquery.nicescroll.js',
+		'web/admin/js/scripts.js',
 
-	    'admin/js/datatable/jquery.dataTables.js',
-		'admin/js/datatable/DT_bootstrap.js',
-		'admin/js/datatable/dynamic_table_init.js',
-        'admin/js/jquery-3.5.1.min.js',
-        'admin/js/bootstrap.min.js',
-        'admin/js/modernizr.min.js',
-		'admin/tagplug/index.js',
+	    'web/admin/js/datatable/jquery.dataTables.js',
+		'web/admin/js/datatable/DT_bootstrap.js',
+		'web/admin/js/datatable/dynamic_table_init.js',
+        'web/admin/js/jquery-3.5.1.min.js',
+        'web/admin/js/bootstrap.min.js',
+        'web/admin/js/modernizr.min.js',
+		'web/admin/tagplug/index.js',
 
-        'admin/js/jquery.counterup.js',
-		'admin/js/jquery.waypoints.min.js',
+        'web/admin/js/jquery.counterup.js',
+		'web/admin/js/jquery.waypoints.min.js',
 
-        'admin/summernote/summernote-lite.min.js',
+
+		'web/public/assets/js/bootstrap.bundle.min.js',
+		'web/public/assets/js/toastr.min.js',
+		'web/public/assets/js/toastr.js.map',
+		'web/public/assets/js/plugins.min.js',
+		'web/public/assets/js/nouislider.min.js',
+		'web/public/assets/js/map.js',
+		'web/public/assets/js/main.js',
+		'web/public/assets/js/jquery.min.js',
+        'web/admin/summernote/summernote-lite.min.js',
 
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset'
+        //'yii\bootstrap5\BootstrapAsset'
+    ];
+
+	public $jsOptions = [
+        'position' => \yii\web\View::POS_HEAD,
     ];
 }
