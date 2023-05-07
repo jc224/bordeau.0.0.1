@@ -86,21 +86,15 @@ $config = [
             'rules' => [
                 md5('site_index')=>'site/index',
                 md5('site_changepassword')=>'site/changepassword',
-                md5('site_acount')=>'site/acount',
-                md5('site_recherche')=>'site/recherche',
-                md5('site_contact')=>'site/contact',
                 md5('site_login')=>'site/login',
-                md5('site_card')=>'site/card',
-                md5('site_statuts')=>'site/statuts',
-                md5('site_paiement')=>'site/paiement',
-                md5('site_commande')=>'site/commande',
-                md5('site_deconnection')=>'site/deconnection',
-                md5('site_compte')=>'site/compte',
-                md5('site_produit').'/<id:\w+>'=>'site/produit',
                 md5('site_dashboard')=>'site/dashboard',
-                md5('site_categorie').'/<id:\w+>'=>'site/categorie',
 
-                
+                md5('admin_crateslidbar')=>'admin/crateslidbar',
+                md5('admin_listeslidbar')=>'admin/listeslidbar',
+                md5('admin_updateslider')=>'admin/updateslider',
+
+                md5('admin_produit')=>'param/produit',
+
 
             ],
         ],

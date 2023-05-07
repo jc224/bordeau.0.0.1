@@ -1,12 +1,12 @@
 <section>
 			<div class="left-side sticky-left-side">														
 				<div class="logo">
-					<a href="dashboard.php">
+					<a href="<?=yii::$app->request->baseUrl.'/'.md5('site_dashboard') ?>">
 						<img src="<?=yii::$app->request->baseUrl ?>/web/public/assets/images/favicon/logoBackEnd.png" alt="" height="36px">
 					</a>
 				</div>
 				<div class="logo-icon text-center">
-					<a href="dashboard.php">
+					<a href="<?=yii::$app->request->baseUrl.'/'.md5('site_dashboard') ?>">
 						<img src="<?=yii::$app->request->baseUrl ?>/web//public/assets/images/favicon/logoBackEnd(1).png" alt="" height="34px" width="34px">
 					</a>
 				</div>
@@ -23,11 +23,11 @@
 						</div>
 						<h5 class="left-nav-title"> Account Information </h5>
 						<ul class="nav nav-pills nav-stacked custom-nav">
-							<li>
+							<!-- <li>
 								<a href="?exit=lock"> <i class="fa fa-user"></i> <span> Lock Screen </span> </a>
-							</li>
+							</li> -->
 							<li>
-								<a href="?exit=yes"> <i class="fa fa-sign-out"></i> <span> Sign Out </span> </a>
+								<a href="?exit=yes"> <i class="fa fa-sign-out"></i> <span> Se déconnecter </span> </a>
 							</li>
 						</ul>
 					</div>
@@ -66,10 +66,10 @@
 									<a href="#"> <i class="fa fa-picture-o"></i></i> <span>Gestion de la Banner </span> </a> <i class="fas fa-sliders-h"></i>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Add Image Slider </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_crateslidbar').'"> Ajouter une banner </a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> List Image Slider </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_listeslidbar').'"> Liste des Banners </a>
 										</li>
 									</ul>
 								</li>
@@ -83,10 +83,10 @@
 									<a href="#"> <i class="fa fa-users"></i> <span> Gestion des Clients</span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Customer List </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Liste des Clients </a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Customer Overview </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Suivie des client </a>
 										</li>
 									</ul>
 								</li>
@@ -100,10 +100,10 @@
 									<a href="#"> <i class="fa fa-folder-open"></i> <span> Gestion des  Categorie </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Create Category </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Cree un cqtegorie </a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> List Category </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Liste des categories </a>
 										</li>
 									</ul>
 								</li>
@@ -134,10 +134,10 @@
 									<a href="#"> <i class="fa fa-th"></i> <span> Gestion des Produits </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Create Products</a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Crée un produit</a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Products List </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Liste des produits </a>
 										</li>
 									</ul>
 								</li>

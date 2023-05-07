@@ -4,12 +4,6 @@ return [
     ### Website Configuration
 // 'CURRENCY'=> "&#2547;" ;
 
-'linkToUploadIndividusProfil'=>'/web/mainAssets/media/uploads/photo/',
-### WEBSITE CURRENCY CONFIGURATION
-'CURRENCY'=> "GNF" ,
-
-### TAX CONFIGURATION
-'TAX'=> 7.5,
 
 ### ADMINS IMAGE DIRECTORY
 'ADMINS_DIRECTORY'=> 'web/public/uploads/admins/',

@@ -1,8 +1,8 @@
 				<!--=*= FOOTER SECTION START =*=-->
 				<footer class="sticky-footer" id="footer">
-					All Rights Reserverd &copy; <?php echo date("Y"); ?> | Developed by 
+					Tous droits réservés &copy; <?php echo date("Y"); ?> | Développé pqr 
 					<a href="//aamroni.info/" target="_blank">
-						<b> Md. Abdullah Al Mamun Roni </b>
+						<b> Bangaly Camara </b>
 					</a> 
 				</footer>
 				<!--=*= FOOTER SECTION END =*=-->
