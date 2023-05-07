@@ -71,6 +71,7 @@ class SiteController extends Controller
     
    
     public function actionIndex(){
+<<<<<<< HEAD
       
      }
  
@@ -117,6 +118,222 @@ class SiteController extends Controller
 
     }
 
+=======
+
+        ## ===*=== [C]ALLING CONTROLLER ===*=== ##
+        
+            ## ===*=== [O]BJECT DEFINED ===*=== ##
+            $homeCtrl = yii::$app->homeClass;
+            $eloquent =  yii::$app->eloquantClass;
+
+
+            ## ===*=== [F]ETCH SLIDER DATA FOR HOME PAGE SLIDER ===*=== ##
+            $columnName = $tableName = null;
+            $columnName = "*";
+            $tableName = "slides";
+            $slidesList = $eloquent->selectData($columnName, $tableName);
+            ## ===*=== [F]ETCH SLIDER DATA FOR HOME PAGE SLIDER ===*=== ##
+
+
+            ## ===*=== [F]ETCH MEN'S PRODUCT LIST FOR SHOWING HOME PAGE PRODUCT ===*=== ##
+            $columnName = $tableName = $whereValue = null;
+            $columnName["1"] = "id";
+            $columnName["2"] = "product_name";
+            $columnName["3"] = "product_price";
+            $columnName["4"] = "product_master_image";
+            $tableName = "products";
+            $whereValue["category_id"] = 1;	//Men's Category ID
+            $whereValue["product_status"] = "In Stock";
+            $formatBy["DESC"] = "id";
+            $paginate["POINT"] = 0;
+            $paginate["LIMIT"] = 8;
+            $menProducts = $eloquent->selectData($columnName, $tableName, @$whereValue, @$inColumn, @$inValue, @$formatBy, @$paginate);
+            ## ===*=== [F]ETCH MEN'S PRODUCT LIST FOR SHOWING HOME PAGE PRODUCT ===*=== ##
+
+
+            ## ===*=== [F]ETCH WOMEN'S PRODUCT LIST FOR SHOWING HOME PAGE PRODUCT ===*=== ##
+            $columnName = $tableName = $whereValue = $inColumn = $inValue = $formatBy = $paginate = null;
+            $columnName["1"] = "id";
+            $columnName["2"] = "product_name";
+            $columnName["3"] = "product_price";
+            $columnName["4"] = "product_master_image";
+            $tableName = "products";
+            $whereValue["category_id"] = 2;	//Women's Category ID
+            $whereValue["product_status"] = "In Stock";
+            $formatBy["DESC"] = "id";
+            $paginate["POINT"] = 0;
+            $paginate["LIMIT"] = 8;
+            $womenProducts = $eloquent->selectData($columnName, $tableName, @$whereValue, @$inColumn, @$inValue, @$formatBy, @$paginate);
+            ## ===*=== [F]ETCH WOMEN'S PRODUCT LIST FOR SHOWING HOME PAGE PRODUCT ===*=== ##
+
+
+            ## ===*=== [F]ETCH WATCH'S PRODUCT LIST FOR SHOWING HOME PAGE PRODUCT ===*=== ##
+            $columnName = $tableName = $whereValue = $inColumn = $inValue = $formatBy = $paginate = null;
+            $columnName["1"] = "id";
+            $columnName["2"] = "product_name";
+            $columnName["3"] = "product_price";
+            $columnName["4"] = "product_master_image";
+            $tableName = "products";
+            $whereValue["category_id"] = 8;	//Watch Category ID
+            $whereValue["product_status"] = "In Stock";
+            $formatBy["DESC"] = "id";
+            $paginate["POINT"] = 0;
+            $paginate["LIMIT"] = 8;
+            $watchProducts = $eloquent->selectData($columnName, $tableName, @$whereValue, @$inColumn, @$inValue, @$formatBy, @$paginate);
+            ## ===*=== [F]ETCH WATCH'S PRODUCT LIST FOR SHOWING HOME PAGE PRODUCT ===*=== ##
+
+        return $this->render('/site/index',['slidesList'=>$slidesList,'menProducts'=>$menProducts,'womenProducts'=>$womenProducts,'watchProducts'=>$watchProducts]);
+
+
+    }
+ 
+
+    public function actionRecherche(){
+        ## ===*=== [O]BJECT DEFINED ===*=== ##
+        
+
+        
+            $homeCtrl = yii::$app->homeClass;
+            $eloquent =  yii::$app->eloquantClass;
+            $searchCtrl =  yii::$app->searchClass;
+            $cp = 0;$text=0;$nod=0;$previous=0;$pageNumber=0;$next=0;
+
+            ## ===*=== [F]ETCH PRODUCT LIST BASED ON PRODUCT TAGS ===*=== ##
+            if(isset($_POST['keywords']))
+            $_SESSION['search_keywords'] = strip_tags($_POST['keywords']);
+
+
+            ## ===*=== [M]ATCH THE KEYWORD AGAINST TAGS ===*=== ##
+            $searchedProductList = $searchCtrl->searchProduct($_SESSION['search_keywords']);
+
+            #== (nod = Number of Data) COUNT HOW MANY DATA IS AVAILABLE IN THIS SUBCATEGORY
+            if(!empty($searchedProductList))
+            {	
+                $_SESSION['SEARCH_CATEGORY_ID'] = $searchedProductList[0]['category_id'];
+                @$nod = count($searchedProductList);
+            }
+
+            #== (rpp = Result Per Page) DEFINED HOW MANY RESULT PER PAGE WILL BE DISPLAYED
+            $rpp = 8;
+            #== (nop = Number of Page) DEFINE HOW MANY PAGE WILL BE APPEAR FOR PAGINATION
+            $nop = ceil(@$nod/$rpp);
+
+            #== IF THE PAGE IS NOT SET THEN ITS RENDERING FROM PAGE NO 1
+            if(!isset($_GET['page'])) {
+                $page = 1;
+                } else {
+                $page = $_GET['page'];
+            }
+
+            #== (cp = Current Page) DEFINE THE DATA DISPLAYED LIMIT
+            $cp = ($page -1)*$rpp;	
+            $searchedProductList = $searchCtrl->searchProductLimit($_SESSION['search_keywords'], $cp, $rpp);
+
+            if(!empty($searchedProductList))
+            {
+                $value = count(array_keys($searchedProductList));
+            }
+
+            #== TEXT WILL BE RETURN THE CUMULATIVE VALUE OF DATA
+            $text = 0;
+            if($text > @$nod) {
+                $text = @$nod;
+                } else if($text < @$nod) {
+                $text = $value * $page;
+            }
+
+            #== BUTTON OPTION FOR NEXT OR PREVIOUS
+            $previous = $page - 1;
+            $next = $page + 1;
+
+            #== EMPTY VARIABLE WHICH RETURNS THE NUMBER OF PAGES
+            $pageNumber = '';														
+            for($i = 1; $i <= $nop; $i++)
+            {
+                $pageNumber .= '	<li class="page-item"> <a class="page-link active" href="search.php?page='.$i.'">'.$i.'<span class="sr-only">(current)</span></a></li>';
+            }
+            ## ===*=== [F]ETCH PRODUCT LIST BASED ON PRODUCT TAGS ===*=== ##
+            return $this->render('/site/search.php',['searchedProductList'=>$searchedProductList,'cp'=>$cp,'text'=>$text,'nod'=>$nod,'previous'=>$previous,'pageNumber'=>$pageNumber,'next'=>$next]);
+
+
+    }
+    
+    // public function actionLogin()
+    // {
+    //     $this->layout = '@app/views/layouts/login_layout.php';
+
+
+    //     if(isset($_POST['try_login']))
+    //         {
+                
+    //             #== LOGIN FORM INPUT FIELD
+    //             $username = $_POST['username'];
+    //             $password = sha1($_POST['password']);
+                
+    //             #== CHECK VALUES WHICH USER PASSES THE DATA
+    //             $adminData =yii::$app->adminClass->tryLogin( $username, $password );
+                
+    //             if(!empty($adminData))
+    //             {
+    //                 #== CREATE LOGGED IN USER SESSION FOR USAGE ENTRIE APPLICATION IN FURTHER WHERE NEEDED
+    //                 $_SESSION['SMC_login_time'] = date("Y-m-d H:i:s");
+    //                 $_SESSION['SMC_login_id'] = $adminData[0]['id'];
+    //                 $_SESSION['SMC_login_admin_name'] = $adminData[0]['admin_name'];
+    //                 $_SESSION['SMC_login_admin_email'] = $adminData[0]['admin_email'];
+    //                 $_SESSION['SMC_login_admin_image'] = $adminData[0]['admin_image'];
+    //                 $_SESSION['SMC_login_admin_status'] = $adminData[0]['admin_status'];
+    //                 $_SESSION['SMC_login_admin_type'] = $adminData[0]['admin_type'];
+    //                 return $this->redirect(md5('site_dashboard')); // REDIRECT IT TO THE ACTION INDEX
+
+    //                 #== IF USER ID AND PASSWORD IS VALID THEN REDIRECT TO THE DASHBOARD PAGE 
+    //             }
+    //         }
+    //         ## ===*=== [L]OGIN ACCESS ===*=== ##
+
+
+    //     if (!Yii::$app->user->isGuest) {
+    //         return $this->goHome();
+    //     }
+
+
+
+    //     return $this->render('login');
+
+
+
+
+    // }
+
+
+    public function actionLogin(){
+
+        $control = yii::$app->controllerClass;
+        $eloquent =  yii::$app->eloquantClass;
+        if( isset($_POST['user_login']) )
+        {
+            #== FETCH DATA FROM THE CUSTOMER TABLE AND VALIDATE WITH SUBMITTED DATA
+            $columnName = "*";
+            $tableName = "customers";
+            $whereValue["customer_email"] = $_POST['user_email'];
+            $whereValue["customer_password"] = sha1($_POST['user_pass']);
+            $userLogin = $eloquent->selectData($columnName, $tableName, @$whereValue);
+            
+            #== AFTER VALIDATAION CREATE A SESSION FOR USER ENTIRE FRONT END APPLICATION
+            if(!empty($userLogin))
+            {
+                $_SESSION['SSCF_login_time'] = date("Y-m-d H:i:s");
+                $_SESSION['SSCF_login_id'] = $userLogin[0]['id'];
+                $_SESSION['SSCF_login_user_name'] = $userLogin[0]['customer_name'];
+                $_SESSION['SSCF_login_user_email'] = $userLogin[0]['customer_email'];
+                $_SESSION['SSCF_login_user_mobile'] = $userLogin[0]['customer_mobile'];
+                $_SESSION['SSCF_login_user_address'] = $userLogin[0]['customer_address'];
+                
+                echo '<meta http-equiv="Refresh" content="0; url=index.php" />';
+            }
+        }
+        return $this->render('/site/loginUsers.php');
+    } 
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
    
     public function actionAdddboutique(){
         return $this->render('login');
