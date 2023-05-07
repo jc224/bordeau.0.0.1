@@ -9,7 +9,11 @@
 							<i class="fa fa-usd"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title">  Vente Totale </span>
+=======
+							<span class="state-title"> Total Sale </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $totalSale ?> </h4>
 						</div>
 					</div>
@@ -24,7 +28,11 @@
 							<i class="fa fa-tags"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title"> Venes ce mois-ci</span>
+=======
+							<span class="state-title"> Sales This Month </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $monthSale ?> </h4>
 						</div>
 					</div>
@@ -39,7 +47,11 @@
 							<i class="fa fa-gavel"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title"> Nouvelle Commande </span>
+=======
+							<span class="state-title"> New Order </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $totalOrder ?> </h4>
 						</div>
 					</div>
@@ -71,7 +83,11 @@
 							<i class="fa fa-dot-circle-o"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title">Nouveaux produits  </span>
+=======
+							<span class="state-title"> New Products Added </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $newProduct ?> </h4>
 						</div>
 					</div>
@@ -87,7 +103,11 @@
 							<i class="fa fa-anchor"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title"> Produit Totale</span>
+=======
+							<span class="state-title"> Total Products </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $totalProduct ?></h4>
 						</div>
 					</div>
@@ -103,7 +123,11 @@
 							<i class="fa fa-chain"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title"> Souscris au Newsletter  </span>
+=======
+							<span class="state-title"> Newsletter Subscriber </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $totalSubscriber ?> </h4>
 						</div>
 					</div>
@@ -118,7 +142,11 @@
 							<i class="fa fa-user"></i>
 						</div>
 						<div class="col-xs-8">
+<<<<<<< HEAD
 							<span class="state-title"> Total Client </span>
+=======
+							<span class="state-title"> Register Customer </span>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<h4 class="counter"> <?= $totalCustomer ?> </h4>
 						</div>
 					</div>
@@ -137,8 +165,14 @@
 							</div>
 							<div class="text-center" style="padding-bottom: 10px;">
 								<h3> <?php echo $_SESSION['SMC_login_admin_name']; ?> </h3>
+<<<<<<< HEAD
 							</div>
 							<a class="btn p-follow-btn pull-left" href="#"> <i class="fa fa-check"></i> Suivez Nous</a>
+=======
+								<h5 class="designation"> FULL STACK WEB DEVELOPER </h5>
+							</div>
+							<a class="btn p-follow-btn pull-left" href="#"> <i class="fa fa-check"></i> Following</a>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							<ul class="p-social-link pull-right">
 								<li class="active">
 									<a href="#">
@@ -176,14 +210,26 @@
 						<div class="panel-body">
 							<div style="margin-bottom: 10px;">
 								<a class="btn p-follow-btn" href="mailto:md.aamroni@hotmail.com"> 
+<<<<<<< HEAD
 									<i class="fa fa-envelope"></i> &nbsp; bangaly@gmail.com
+=======
+									<i class="fa fa-envelope"></i> &nbsp; md.aamroni@hotmail.com 
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 								</a>
 							</div>
 							<div style="margin-bottom: 10px;">
 								<a class="btn p-follow-btn" href="callto:8801316440504" style="margin-right: 8px;"> 
+<<<<<<< HEAD
 									<i class="fa fa-phone"></i> &nbsp; +224 623 516 202
 								</a>
 								
+=======
+									<i class="fa fa-phone"></i> &nbsp; +880 1316 440504
+								</a>
+								<a class="btn p-follow-btn" href="skype:live:.cid.5ed7daebee5e7820"> 
+									<i class="fa fa-skype"></i> &nbsp; md.aamroni
+								</a>
+>>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 							</div>
 						</div>
 					</div>

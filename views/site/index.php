@@ -32,22 +32,22 @@
 			<div class="info-box">
 				<i class="icon-shipping"></i>
 				<div class="info-box-content">
-					<h4>FREE SHIPPING & RETURN</h4>
-					<p>Free shipping on all orders over $99.</p>
+					<h4>LIVRAISON GRATUIT & RETOUR</h4>
+					<p>LIVRAISON GRATUIT SUR TOUS LES COMMANDE A PARTIR DE  400.000 GNF.</p>
 				</div>
 			</div>
 			<div class="info-box">
 				<i class="icon-us-dollar"></i>
 				<div class="info-box-content">
-					<h4>MONEY BACK GUARANTEE</h4>
-					<p>100% money back guarantee</p>
+					<h4>Garentie de  remboursement</h4>
+					<p>100% Garentie de  remboursement</p>
 				</div>
 			</div>
 			<div class="info-box">
 				<i class="icon-support"></i>
 				<div class="info-box-content">
-					<h4>ONLINE SUPPORT 24/7</h4>
-					<p>Lorem ipsum dolor sit amet.</p>
+					<h4>Assistance en ligne 24/7</h4>
+					<p>+224 623 516 202</p>
 				</div>
 			</div>
 		</div>
@@ -124,7 +124,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="partners-container">
+	<!-- <div class="partners-container">
 		<div class="container">
 			<div class="partners-carousel owl-carousel owl-theme">
 				<a href="#" class="partner">
@@ -150,6 +150,6 @@
 				</a>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </main>
 <!--=*= HOME SECTION START =*=-->
