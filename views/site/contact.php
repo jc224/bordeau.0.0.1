@@ -48,7 +48,7 @@
 						scrollwheel:false,
 						
 						// #== The latitude and longitude to center the map (always required)
-						center: new google.maps.LatLng(23.617928, 90.4864331), // New York
+						center: new google.maps.LatLng(9.610854, -13.627408), // New York
 						
 						// #== How you would like to style the map. 
 						// #== This is where you would paste any style found on Snazzy Maps.
@@ -64,7 +64,7 @@
 					
 					// #== Let's also add a marker while we're at it
 					
-				var marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(23.617928, 90.4864331)});infowindow = new google.maps.InfoWindow({content:"<b>https://aamroni.net</b><br/>BSCIC-1420<br/> Narayanganj" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
+				var marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(9.610854, -13.627408)});infowindow = new google.maps.InfoWindow({content:"<b>https://aamroni.net</b><br/>BSCIC-1420<br/> Narayanganj" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
 			</script> 
 			<!--=*= GOOGLE MAP CONTENT END =*=-->
 			
