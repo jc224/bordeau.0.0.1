@@ -136,6 +136,7 @@
 								<div class="header-menu">
 									<ul>
 										<li><a href="<?= Yii::$app->request->baseUrl.'/'.md5("site_acount") ?>">MON COMPTE</a></li>
+										<li><a href="<?= Yii::$app->request->baseUrl.'/'.md5("site_acount") ?>">AJOUTER UNE BOUTIQUE</a></li>
 										<li><a href="<?= Yii::$app->request->baseUrl.'/'.md5("site_contact") ?>">Nous Contacter</a></li>
 										
 										<?php
@@ -244,11 +245,11 @@
 											<?php
 												if(count(@$myaddcartItems) > 0)
 												{
-													echo '<a href="'.Yii::$app->request->baseUrl.'/'.md5("site_card").'" class="btn btn-block"> Checkout </a>';
+													echo '<a href="'.Yii::$app->request->baseUrl.'/'.md5("site_card").'" class="btn btn-block"> Commander </a>';
 												}
 												else
 												{
-													echo '<a href="'.Yii::$app->request->baseUrl.'/'.md5("site_index").'" class="btn btn-block"> Checkout </a>';
+													echo '<a href="'.Yii::$app->request->baseUrl.'/'.md5("site_index").'" class="btn btn-block"> Commander </a>';
 												}
 											?>
 											
