@@ -83,10 +83,10 @@
 									<a href="#"> <i class="fa fa-users"></i> <span> Gestion des Clients</span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Liste des Clients </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_client').'"> Liste des Clients </a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Suivie des client </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_suivie').'"> Livreur</a>
 										</li>
 									</ul>
 								</li>
@@ -100,10 +100,10 @@
 									<a href="#"> <i class="fa fa-folder-open"></i> <span> Gestion des  Categorie </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Cree un cqtegorie </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_creatcategorie').'"> Cree une categorie </a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Liste des categories </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_listcategorie').'"> Liste des categories </a>
 										</li>
 									</ul>
 								</li>
@@ -117,10 +117,10 @@
 									<a href="#"> <i class="fa fa-list-alt"></i> <span> Sous Categorie	 </span> </a>
 									<ul class="sub-menu-list">
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Create Sub Category </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_subcategorie').'"> Cree un sous categorie </a>
 										</li>
 										<li>
-											<a href="'.yii::$app->request->baseUrl.'/'.md5('lient').'"> Sub Category List </a>
+											<a href="'.yii::$app->request->baseUrl.'/'.md5('admin_listesubcat').'"> Liste des Sous Caegorie </a>
 										</li>
 									</ul>
 								</li>

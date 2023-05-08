@@ -4,15 +4,6 @@ return [
     ### Website Configuration
 // 'CURRENCY'=> "&#2547;" ;
 
-<<<<<<< HEAD
-=======
-'linkToUploadIndividusProfil'=>'/web/mainAssets/media/uploads/photo/',
-### WEBSITE CURRENCY CONFIGURATION
-'CURRENCY'=> "GNF" ,
-
-### TAX CONFIGURATION
-'TAX'=> 7.5,
->>>>>>> 75939c7c8316078e785cec7e3a549d25cb38efd2
 
 ### ADMINS IMAGE DIRECTORY
 'ADMINS_DIRECTORY'=> 'web/public/uploads/admins/',
@@ -27,7 +18,7 @@ return [
 'PRODUCTADD_DIRECTORY'=> 'web/public/uploads/prodaddimages/',
 
 ### SUBCATEGORY BANNER IMAGE DIRECTORY
-'BANNER_DIRECTORY'=> 'web/public/uploads/   /',
+'BANNER_DIRECTORY'=> 'web/public/uploads/banners/',
 
 
 

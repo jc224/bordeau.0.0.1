@@ -35,7 +35,7 @@
 					?>
 					
 					<div class="form">
-						<form class="form-horizontal" role="form" method="post"action="<?= yii::$app->request->baseUrl.'/'.md5('admin_updateslider') ?>" enctype="multipart/form-data">
+						<form class="form-horizontal" role="form" method="post" action="<?= yii::$app->request->baseUrl.'/'.md5('admin_updateslider') ?>" enctype="multipart/form-data">
                             <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>"/>
 
                           <div class="form-group">
@@ -85,7 +85,7 @@
 							<div class="form-group">
 								<div class="col-lg-offset-2 col-lg-10">
 									<button name="try_update" class="btn btn-primary" type="submit"> Modifier </button>
-									<a href="list-slider.php" class="btn btn-default" style="text-decoration: none;"> Retourner a la liste </a>
+									<a href="<?= yii::$app->request->baseUrl.'/'.md5('admin_listeslidbar') ?>" class="btn btn-default" style="text-decoration: none;"> Retourner a la liste </a>
 								</div>
 							</div>
 						</form>	
